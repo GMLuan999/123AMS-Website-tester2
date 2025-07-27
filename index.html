@@ -412,73 +412,178 @@
                 <h2 class="text-4xl font-bold text-dark-blue mb-4">What Our Clients Say</h2>
                 <p class="text-xl text-gray-600">Trusted by businesses and individuals across Mpumalanga</p>
             </div>
-            
-            <div id="testimonialSlider" class="max-w-4xl mx-auto">
-                <div class="testimonial-slide active bg-light-gray p-8 rounded-2xl text-center">
-                    <div class="text-brand-yellow text-4xl mb-4">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="text-lg text-gray-700 mb-6 italic">
-                        "123 Accounting has been handling our company's books for 5 years. Their attention to detail and 
-                        professional service has been exceptional. Highly recommended!"
-                    </p>
-                    <div class="flex items-center justify-center space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-brand-orange to-brand-yellow rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold">SM</span>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-dark-blue">Sarah Mitchell</p>
-                            <p class="text-gray-600 text-sm">CEO, Mitchell Enterprises</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide bg-light-gray p-8 rounded-2xl text-center hidden">
-                    <div class="text-brand-yellow text-4xl mb-4">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="text-lg text-gray-700 mb-6 italic">
-                        "Professional, reliable, and always available when we need them. They've helped us navigate 
-                        complex tax issues with ease."
-                    </p>
-                    <div class="flex items-center justify-center space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-brand-orange to-brand-yellow rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold">JD</span>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-dark-blue">John Davies</p>
-                            <p class="text-gray-600 text-sm">Owner, Davies Construction</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide bg-light-gray p-8 rounded-2xl text-center hidden">
-                    <div class="text-brand-yellow text-4xl mb-4">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="text-lg text-gray-700 mb-6 italic">
-                        "Their payroll service has saved us so much time and hassle. Everything is always submitted 
-                        on time and accurately."
-                    </p>
-                    <div class="flex items-center justify-center space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-brand-orange to-brand-yellow rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold">LK</span>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-dark-blue">Linda Kruger</p>
-                            <p class="text-gray-600 text-sm">HR Manager, Kruger Logistics</p>
-                        </div>
-                    </div>
+            <div class="relative max-w-4xl mx-auto" id="testimonialSlider">
+                <!-- Left arrow -->
+                <button id="testimonialPrev" aria-label="Previous testimonial"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-600 transition">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <!-- Right arrow -->
+                <button id="testimonialNext" aria-label="Next testimonial"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-600 transition">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div id="testimonialSlides">
+                    <!-- Slides will be injected here -->
                 </div>
             </div>
-            
-            <div class="flex justify-center mt-8 space-x-2">
-                <button onclick="changeTestimonial(0)" class="testimonial-dot w-3 h-3 bg-brand-orange rounded-full"></button>
-                <button onclick="changeTestimonial(1)" class="testimonial-dot w-3 h-3 bg-gray-300 rounded-full"></button>
-                <button onclick="changeTestimonial(2)" class="testimonial-dot w-3 h-3 bg-gray-300 rounded-full"></button>
+            <div class="flex justify-center mt-8 space-x-2" id="testimonialDots">
+                <!-- Dots will be injected here -->
             </div>
         </div>
     </section>
+    <script>
+    // filepath: c:\Users\luanh\OneDrive\Documentos\BIZ\123AMS\123ams.html
+    const testimonialData = [
+        {
+            quote: "123 Accounting helped us streamline our payroll and tax submissions. Always on time and incredibly helpful!",
+            initials: "TS",
+            title: "Founder, Sibiya Transport"
+        },
+        {
+            quote: "We were drowning in admin before partnering with 123. Now we can focus on growing our business. They're lifesavers!",
+            initials: "KL",
+            title: "Co-Owner, Lategan & Sons Construction"
+        },
+        {
+            quote: "As a small business, we needed someone who understood our needs. 123 delivered beyond expectations. Friendly, efficient, and reliable.",
+            initials: "ZM",
+            title: "Owner, ZM Hair Studio"
+        },
+        {
+            quote: "I’ve worked with a few firms over the years, but none match the consistency and personal service of 123 Accounting.",
+            initials: "PD",
+            title: "Director, CapeTech Supplies"
+        },
+        {
+            quote: "From SARS submissions to monthly reports, 123 has been rock solid. Highly recommended for any SME.",
+            initials: "RB",
+            title: "Operations Manager, Booley & Co"
+        },
+        {
+            quote: "I had no clue about bookkeeping when I started my business. 123 took me under their wing and guided me every step.",
+            initials: "MF",
+            title: "Freelance Designer, Johannesburg"
+        },
+        {
+            quote: "Fast turnaround times. Transparent fees. Real people. That’s why I stick with 123.",
+            initials: "LT",
+            title: "E-commerce Owner, Soweto Goods"
+        },
+        {
+            quote: "Switching to 123 was the best decision we made. Everything runs smoother now — payroll, VAT, you name it.",
+            initials: "JB",
+            title: "Managing Partner, The Braai Bros"
+        },
+        {
+            quote: "123 is professional, but not cold. They genuinely care about our business and it shows.",
+            initials: "NL",
+            title: "HR Manager, Langa Solutions"
+        },
+        {
+            quote: "Trust is everything in finance. We trust 123 with ours, and they’ve never let us down.",
+            initials: "DW",
+            title: "Owner, Wessels AgriTech"
+        },
+        {
+            quote: "Their team is always one step ahead — reminding us of deadlines and keeping us compliant.",
+            initials: "AY",
+            title: "Director, Yusuf Legal Consulting"
+        },
+        {
+            quote: "I appreciate how 123 breaks things down in plain English. No jargon, just straight answers.",
+            initials: "BK",
+            title: "Co-Founder, KB Marketing"
+        },
+        {
+            quote: "Accounting isn’t my strength — but thanks to 123, I don’t have to stress about it.",
+            initials: "CR",
+            title: "Owner, Crumbs & Co Bakery"
+        },
+        {
+            quote: "They helped us recover from a SARS audit. Professional, calm, and efficient under pressure.",
+            initials: "NV",
+            title: "Financial Controller, Vilakazi Logistics"
+        },
+        {
+            quote: "123 feels like an extension of our team. They’re not just service providers — they’re partners.",
+            initials: "TH",
+            title: "Director, Hendricks Property Group"
+        }
+    ];
+
+    let currentTestimonial = 0;
+    const testimonialSlides = document.getElementById('testimonialSlides');
+    const testimonialDots = document.getElementById('testimonialDots');
+
+    function renderTestimonials() {
+        testimonialSlides.innerHTML = '';
+        testimonialDots.innerHTML = '';
+        testimonialData.forEach((t, i) => {
+            const slide = document.createElement('div');
+            slide.className = `testimonial-slide bg-light-gray p-8 rounded-2xl text-center${i === 0 ? '' : ' hidden'}`;
+            slide.innerHTML = `
+                <div class="text-brand-yellow text-4xl mb-4">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="text-lg text-gray-700 mb-6 italic">
+                    "${t.quote}"
+                </p>
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-brand-orange to-brand-yellow rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold">${t.initials}</span>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 text-sm">${t.title}</p>
+                    </div>
+                </div>
+            `;
+            testimonialSlides.appendChild(slide);
+
+            const dot = document.createElement('button');
+            dot.className = `testimonial-dot w-3 h-3 rounded-full ${i === 0 ? 'bg-brand-orange' : 'bg-gray-300'}`;
+            dot.setAttribute('aria-label', `Show testimonial ${i + 1}`);
+            dot.onclick = () => changeTestimonial(i);
+            testimonialDots.appendChild(dot);
+        });
+    }
+    renderTestimonials();
+
+    function changeTestimonial(index) {
+        const slides = testimonialSlides.querySelectorAll('.testimonial-slide');
+        const dots = testimonialDots.querySelectorAll('.testimonial-dot');
+        slides[currentTestimonial].classList.add('hidden');
+        dots[currentTestimonial].classList.remove('bg-brand-orange');
+        dots[currentTestimonial].classList.add('bg-gray-300');
+        currentTestimonial = index;
+        slides[currentTestimonial].classList.remove('hidden');
+        dots[currentTestimonial].classList.add('bg-brand-orange');
+        dots[currentTestimonial].classList.remove('bg-gray-300');
+    }
+
+    document.getElementById('testimonialPrev').onclick = function() {
+        let prev = currentTestimonial - 1;
+        if (prev < 0) prev = testimonialData.length - 1;
+        changeTestimonial(prev);
+    };
+    document.getElementById('testimonialNext').onclick = function() {
+        let next = (currentTestimonial + 1) % testimonialData.length;
+        changeTestimonial(next);
+    };
+
+    let testimonialInterval = setInterval(() => {
+        let next = (currentTestimonial + 1) % testimonialData.length;
+        changeTestimonial(next);
+    }, 5000);
+
+    document.getElementById('testimonialSlider').addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+    document.getElementById('testimonialSlider').addEventListener('mouseleave', () => {
+        testimonialInterval = setInterval(() => {
+            let next = (currentTestimonial + 1) % testimonialData.length;
+            changeTestimonial(next);
+        }, 5000);
+    });
+    </script>
 
     <!-- Affiliations -->
     <section class="py-16 bg-light-gray">
